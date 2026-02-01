@@ -2,27 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const yesBtn = document.getElementById("yes");
   const noBtn = document.getElementById("no");
   const buttons = document.getElementById("buttons");
-  const result = document.getElementById("result");
   const text = document.getElementById("text");
-  const finalMessage = document.getElementById("finalMessage");
   const question = document.getElementById("question");
+  const backBtn = document.getElementById("backBtn");
 
-  // Safety check (prevents "frozen" if something is missing)
-  if (!yesBtn || !noBtn || !buttons || !result || !text || !finalMessage || !question) return;
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
 
-  let yeeScale = 1; // starts normal size
+  let yeeScale = 1;
 
   function makeYeeBigger() {
-    // grows a bit each time, with a max so it doesn't get ridiculous
     yeeScale = Math.min(yeeScale + 0.08, 2.2);
     yesBtn.style.transform = `scale(${yeeScale})`;
   }
 
   function shakeNey() {
-    // retrigger animation every time
     noBtn.classList.remove("shake");
-    // force reflow so animation restarts
-    void noBtn.offsetWidth;
+    void noBtn.offsetWidth; // force reflow so animation restarts
     noBtn.classList.add("shake");
   }
 
@@ -43,12 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   yesBtn.addEventListener("click", () => {
-    buttons.style.display = "none";
-    text.style.display = "none";
-    question.style.display = "none";
-    result.classList.remove("hidden");
+    // switch pages with fade
+    page1.classList.remove("active");
+    page2.classList.add("active");
+  });
 
-    finalMessage.innerHTML =
-      "You've got yourselves a date.<br>Hritika, thank you for being my Valentine 💗";
+  backBtn.addEventListener("click", () => {
+    // reset growth
+    yeeScale = 1;
+    yesBtn.style.transform = "scale(1)";
+
+    // reset Ney position
+    noBtn.style.left = "";
+    noBtn.style.top = "";
+
+    page2.classList.remove("active");
+    page1.classList.add("active");
   });
 });
