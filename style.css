@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: pink;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 360px;
+}
+
+.buttons {
+  position: relative;
+  height: 90px;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* YES button (bigger) */
+#yes {
+  background: hotpink;
+  color: white;
+  padding: 20px 40px;
+  font-size: 22px;
+}
+
+/* NO button (smaller & sneaky) */
+#no {
+  position: absolute;
+  background: lightgray;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
+
+img {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+#photo {
+  width: 100%;
+  max-width: 280px;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+/* Mobile warning hidden by default */
+#mobileWarning {
+  display: none;
+  height: 100vh;
+  background: pink;
+  text-align: center;
+  padding-top: 40vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Desktop content visible by default */
+#desktopContent {
+  display: block;
+}
+
+/* Phones / small screens */
+@media (max-width: 768px) {
+  #desktopContent {
+    display: none;
+  }
+
+  #mobileWarning {
+    display: block;
+  }
+}
+
